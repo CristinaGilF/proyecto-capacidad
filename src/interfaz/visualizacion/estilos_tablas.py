@@ -66,9 +66,9 @@ def tabla(df):
         function(params) {
             let style = { 'fontSize': '16px', 'textAlign': 'center' };
 
-            if (params.value < 50) {
+            if (params.value < 80) {
                 style.backgroundColor = '#b6f2b6';
-            } else if (params.value < 80) {
+            } else if (params.value < 95) {
                 style.backgroundColor = '#fff3b0';
             } else {
                 style.backgroundColor = '#f7b2b0';
