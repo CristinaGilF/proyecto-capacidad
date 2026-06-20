@@ -1,4 +1,6 @@
 import streamlit as st
+from interfaz.visualizacion.estilos_tablas import tabla
+
 from logica.calculo_capacidad import(
     capacidad_por_rol,
     carga_total_por_rol,
@@ -6,7 +8,9 @@ from logica.calculo_capacidad import(
 )
 
 def mostrar_capacidad():
-    st.header("Capacidad disponible del equipo")
+    st.title("Capacidad disponible del equipo")
+
+    st.markdown("---")
 
     #---Se valida que haya datos cargados
     if "df_equipo" not in st.session_state or "df_proyectos" not in st.session_state:
@@ -24,23 +28,9 @@ def mostrar_capacidad():
 
     #---Tabla principal
     st.subheader("Capacidad y carga por rol")
-    st.dataframe(df_resumen)
+    tabla(df_resumen)
 
-    def color_ocupacion(col):
-        return[
-            "background-color: #b6f2b6" if val < 50 else #verde suave
-            "background-color: #fff3b0" if val < 80 else #amarillo suave
-            "background-color: #f7b2b0" #rojo suave
-            for val in col
-        ]
-    
-    st.subheader("Capacidad y carga por rol")
-
-    styled_df = df_resumen.style.apply(
-        color_ocupacion, subset=["% Ocupación"]
-    )
-
-    st.dataframe(styled_df)
+    st.markdown("<div style='margin-top:-10px'></div>", unsafe_allow_html=True)
 
     #---Resumen global
     cap_global = df_resumen["Capacidad (h)"].sum()
@@ -48,9 +38,20 @@ def mostrar_capacidad():
     ocup_global = (carga_global/cap_global) * 100 if cap_global > 0 else 0
     disp_global = 100 - ocup_global
 
+    st.markdown("---")
+    
     st.subheader("Resumen global del equipo")
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Capacidad total",f"{cap_global:.1f} h")
-    col2.metric("Carga total",f"{carga_global:.1f} h")
-    col3.metric("Ocupación global",f"{ocup_global:.1f} %")
-    col4.metric("Disponibilidad global",f"{disp_global:.1f} %")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write("Capacidad total",f"{cap_global:.1f} h")
+    with col2:
+        st.write("Carga total",f"{carga_global:.1f} h")
+
+    col3, col4 = st.columns(2)
+    with col3:
+        st.write("Ocupación global",f"{ocup_global:.1f} %")
+    with col4:
+        st.write("Disponibilidad global",f"{disp_global:.1f} %")
+
+    st.markdown("<div style='margin-bottom:20px;'></div>", unsafe_allow_html=True)

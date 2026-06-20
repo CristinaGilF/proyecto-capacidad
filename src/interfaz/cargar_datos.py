@@ -3,6 +3,7 @@ import streamlit as st
 from interfaz.visualizacion.esquemas import ESQUEMAS
 from datos.validaciones import validar_fichero, limpiar_filas_vacias
 from datos.cargar_datos import carga_datos
+from interfaz.visualizacion.estilos_tablas import tabla
 
 def mostrar_cargar_datos():
     st.title("Cargar Datos")
@@ -31,9 +32,11 @@ def mostrar_cargar_datos():
             st.error(mensaje)        
         else:
             st.success("Datos cargados correctamente")
-            st.dataframe(df)
+            tabla(df)
             st.session_state["df_equipo"] = df
-
+    
+    st.markdown ("---")
+    
     #--- Datos del proyectos en curso ---
     st.subheader("Carga de proyectos en curso (CSV o Excel)")
 
@@ -54,10 +57,11 @@ def mostrar_cargar_datos():
             st.error(mensaje)
         else:
             st.success("Proyectos cargados correctamente")
-            st.dataframe(df_proyectos)
+            tabla(df_proyectos)
             st.session_state["df_proyectos"] = df_proyectos
     
     # --- Mensaje final cuando todo está listo ---
     if "df_equipo" in st.session_state and "df_proyectos" in st.session_state:
         st.markdown ("---")
         st.success("Datos cargados correctamente. Ya puedes navegar al resto de secciones del menú.")
+    

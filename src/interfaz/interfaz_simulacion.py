@@ -1,4 +1,5 @@
 import streamlit as st
+from interfaz.visualizacion.estilos_tablas import tabla
 from logica.calculo_simulacion import simular_proyecto
 from logica.modelo_capacidad import(
     df_duraciones_fases,
@@ -7,7 +8,9 @@ from logica.modelo_capacidad import(
 )
 
 def mostrar_simulacion():
-    st.header("Simulación de impacto de un nuevo proyecto")
+    st.title("Simulación de impacto de un nuevo proyecto")
+
+    st.markdown("---")
 
     #--- Validación de datos cargados por el usuario
     if "df_equipo" not in st.session_state or "df_proyectos" not in st.session_state:
@@ -34,8 +37,14 @@ def mostrar_simulacion():
             df_dedicacion_fases
         )
 
+        st.markdown("---")
+
         st.subheader("Resultado de la simulación")
-        st.dataframe(df_resultado)
+        tabla(df_resultado)
+        
+        st.markdown("<div style='margin-top:-10px;'></div>", unsafe_allow_html=True)
+        
+        st.markdown("---")
 
         #--- Alertas de sonrecarga
         sobrecargados = df_resultado[df_resultado["Ocupación (%)"] > 100]
