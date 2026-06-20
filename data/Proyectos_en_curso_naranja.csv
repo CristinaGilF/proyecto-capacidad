@@ -1,0 +1,23 @@
+Proyecto;Tipologia;Fase;Recurso;Rol
+Oferta;Servicio;U;Lidia;Gestion
+Oferta;Servicio;U;Pablo;Desarrollador CRM
+Oferta;Servicio;U;Fernando;Desarrollador Facturacion
+Subida;Modificaciones;A;Juan;Gestion
+Subida;Modificaciones;A;Cristina;Desarrollador CRM
+Nuevo Producto;Servicio complejo;V;Jesus;Gestion
+Servicio;Servicio;V;Juan;Gestion
+Nuevo Producto 2;Servicio complejo;A;Jesus;Gestion
+Oferta;Servicio complejo;A;Lidia;Gestion
+Servicio;Servicio;U;Pablo;Desarrollador CRM
+Nuevo Producto 2;Servicio complejo;P;Cristina;Desarrollador CRM
+Servicio;Servicio;U;Josefina;Desarrollador Facturacion
+Nuevo Producto 2;Servicio complejo;U;Alfonso;Desarrollador Facturacion
+Nuevo Producto 2;Servicio complejo;S;Miguel;Desarrollador CRM
+Flash;Modificaciones;A;Lidia;Gestion
+Flash;Modificaciones;A;Cristina;Desarrollador CRM
+Nuevo Producto 2;Servicio complejo;P;Fernando;Desarrollador Facturacion
+Nuevo Producto 2;Servicio complejo;A;Lidia;Gestion
+Nuevo Producto 3;Servicio;V;Juan;Gestion
+Nuevo Producto 4;Servicio;D;Alfonso;Desarrollador Facturacion
+Servicio;Servicio;V;Jesús;Gestion
+Proyecto;Servicio complejo;P;Miguel;Desarrollador CRM
